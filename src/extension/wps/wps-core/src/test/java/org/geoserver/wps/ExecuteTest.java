@@ -36,6 +36,7 @@ import org.geoserver.data.test.SystemTestData;
 import org.geoserver.data.test.SystemTestData.LayerProperty;
 import org.geoserver.test.RemoteOWSTestSupport;
 import org.geoserver.util.NoExternalEntityResolver;
+import org.geoserver.wps.MonkeyProcess;
 import org.geotools.data.collection.ListFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.feature.FeatureCollection;
@@ -91,7 +92,7 @@ public class ExecuteTest extends WPSTestSupport {
         String xml =  
           "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>" +
           "<!DOCTYPE foo [<!ELEMENT foo ANY >\n" + 
-          "  <!ENTITY xxe SYSTEM \"file:///file/not/there\" >]>\n" +
+          "  <!ENTITY xxe SYSTEM \"FILE:///file/not/there?.XSD\" >]>\n" +
           "<wps:Execute service='WPS' version='1.0.0' xmlns:wps='http://www.opengis.net/wps/1.0.0' " + 
               "xmlns:ows='http://www.opengis.net/ows/1.1'>" + 
             "<ows:Identifier>JTS:buffer</ows:Identifier>" + 
