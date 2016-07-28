@@ -17,14 +17,13 @@
     <name>GeoFence Server</name>
     <description>GeoFence security internal server</description>
 
+    <!-- wicket-dnd hosted on build.georchestra.org -->
     <repositories>
-        <repository>
-            <id>wicket-dnd</id>
-            <name>Wicket-dnd Repository</name>
-            <url>http://wicket-dnd.googlecode.com/svn/repo</url>
-        </repository>
+      <repository>
+        <id>build.georchestra.org</id>
+        <url>http://build.georchestra.org/maven/repository</url>
+      </repository>
     </repositories>
-
     <dependencies>
          <dependency>
             <groupId>com.googlecode.genericdao</groupId>
