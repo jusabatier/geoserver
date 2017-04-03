@@ -1039,7 +1039,14 @@ public class Capabilities_1_3_0_Transformer extends TransformerBase {
                 }
                 element("Name", defaultStyle.prefixedName());
                 if (ftStyle.getDescription() != null) {
-                    element("Title", ftStyle.getDescription().getTitle());
+                    // PMT: WMS capabilities requires at least a title,
+                    // if description's title is null, use the name
+                    // for title.
+                    if (ftStyle.getDescription().getTitle() != null) {
+                        element("Title", ftStyle.getDescription().getTitle());
+                    } else {
+                        element("Title", defaultStyle.prefixedName());
+                    }
                     element("Abstract", ftStyle.getDescription().getAbstract());
                 }
                 handleLegendURL(layer, layer.getLegend(), null, layer.getDefaultStyle());
@@ -1057,7 +1064,11 @@ public class Capabilities_1_3_0_Transformer extends TransformerBase {
                         start("Style");
                         element("Name", styleInfo.prefixedName());
                         if (ftStyle.getDescription() != null) {
-                            element("Title", ftStyle.getDescription().getTitle());
+                            if (ftStyle.getDescription().getTitle() != null) {
+                                element("Title", ftStyle.getDescription().getTitle());
+                            } else {
+                                element("Title", styleInfo.prefixedName());
+                            }
                             element("Abstract", ftStyle.getDescription().getAbstract());
                         }
                         handleLegendURL(layer, null, styleInfo, styleInfo);
