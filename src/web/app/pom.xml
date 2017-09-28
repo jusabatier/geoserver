@@ -1286,6 +1286,13 @@
           <groupId>org.geoserver.community</groupId>
           <artifactId>gs-geofence-server</artifactId>
           <version>${project.version}</version>
+          <exclusions>
+            <!-- already provided by cglib-nodep -->
+            <exclusion>
+              <groupId>cglib</groupId>
+              <artifactId>cglib</artifactId>
+            </exclusion>
+          </exclusions>
         </dependency>              
       </dependencies>      
    </profile>
